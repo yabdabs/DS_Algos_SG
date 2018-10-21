@@ -58,19 +58,14 @@ function maxChar(str) {
 
     for (let key in obj) {
         if(obj.hasOwnProperty(key)) {
-            console.log('OBJ,KEY', obj[key])
             if (obj[key] > max) {
                 max = obj[key]
                 char = key
             }
         }
     }
-    console.log(char)
     return char
 
 }
-
-maxChar('a')
-
 
 module.exports = maxChar;
