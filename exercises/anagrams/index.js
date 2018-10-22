@@ -14,6 +14,7 @@
 // do that for both strings
 // then compare the objects keys and values and see if they are equal to eachother. use for in
 
+/*
 function anagrams(stringA, stringB) {
 
     let objA = {}
@@ -48,20 +49,85 @@ function anagrams(stringA, stringB) {
     }
 
     if (Object.keys(objA).length != Object.keys(objB).length) {
-        isEqual = false
+       return isEqual = false
     }
 
     for (key in objA) {
         if (objA.hasOwnProperty(key)) {
             if(objA[key] !== objB[key]) {
-                isEqual = false
+                return isEqual = false
             }
         }
     }
 
     return isEqual
 }
+*/
 
-anagrams('Whoa! Hi!', 'Hi! Whoa!')
+/*
+const anagrams = (stringA, stringB) => {
+
+    stringA = stringA.replace(/[^\w]/g, '').toLowerCase()
+    stringB = stringB.replace(/[^\w]/g, '').toLowerCase()
+    let objA = {}
+    let objB = {}
+    let isEqual = true
+
+
+    for (char of stringA) {
+        if (!objA[char]) {
+            objA[char] = 1
+        }
+        else {
+            objA[char] ++
+        }
+    }
+
+    for (char of stringB) {
+        if (!objB[char]) {
+            objB[char] = 1
+        }
+        else {
+            objB[char] ++
+        }
+    }
+
+    if (Object.keys(objA).length != Object.keys(objB).length) {
+        return isEqual = false
+     }
+ 
+     for (key in objA) {
+         if (objA.hasOwnProperty(key)) {
+             if(objA[key] !== objB[key]) {
+                 return isEqual = false
+             }
+         }
+     }
+ 
+     return isEqual
+}
+*/
+
+
+const anagrams = (stringA, stringB) => {
+    
+    // you can also create a function to clean up the string, and return it
+    // ^ inside [] means 'not'
+    stringA = stringA.replace(/[^\w]/g, '').toLowerCase()
+    stringB = stringB.replace(/[^\w]/g, '').toLowerCase()
+
+    stringA = stringA.split('').sort().join('')
+    stringB = stringB.split('').sort().join('')
+
+    if (stringA !== stringB) {
+        return false
+    }
+
+    return true
+
+
+}
+
+anagrams('Whoa!    Hi!', 'Hi!   Whoa!')
 
 module.exports = anagrams;
